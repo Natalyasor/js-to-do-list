@@ -1,7 +1,84 @@
-@use '../../style' as s;
+.page {
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	max-width: 720px;
+	margin: 0;
+	background-color: #fff;
+	border-radius: 12px;
 
-main {
-	background: s.color(dark);
-	color: s.color(light);
-	padding: s.space(4);
-} 
+}
+.title {
+	font-size: 24px;
+}
+.form {
+	display: grid;
+	grid-template-columns: 5fr 1fr;
+	gap: 12px;
+	.form_button {
+		background: blue;
+		padding: 10px 20px;
+		border-radius: 5px;
+	}
+
+	.form_input {
+		border: 1px solid gray;
+		border-radius: 5px;
+	width: 100%;
+	padding: 10px;
+	}
+}
+
+.task {
+	.task_list {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+	.task {
+display: grid;
+grid-template-columns: auto 1fr auto auto;
+gap: 12px;
+align-items: center;
+
+padding: 8px 0;
+border-bottom: 1px solid #d3dee9;
+	}
+	.task_number {
+		font-size: 14;
+		color: #212529;
+	}
+	.task_text {
+		transition: opacity 0.7s;
+		font-size: 16px;
+		color: #212529;
+	}
+
+	.task--done .task_text {
+opacity: 0.5;
+text-decoration: line-through;
+	}
+	.task_button {
+		transition: opacity 0.7s;
+		button:hover {
+			opacity: 0.5;
+		}
+		height: 28px;
+		width: 28px;
+		background-size: cover;
+
+		.task--do {
+			background-image: url('/svg/task_do.svg');
+		}
+		.task--cancel {
+			background-image: url('/svg/task_cancel.svg');
+			
+		}
+		.task--done {
+			background-image: url('/svg/task_done.svg');
+			
+		}
+	}
+	
+}
