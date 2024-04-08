@@ -16,13 +16,14 @@
 	display: grid;
 	grid-template-columns: 5fr 1fr;
 	gap: 12px;
-	.form_button {
+
+	&__button {
 		background: blue;
 		padding: 10px 20px;
 		border-radius: 5px;
 	}
 
-	.form_input {
+	&__input {
 		border: 1px solid gray;
 		border-radius: 5px;
 	width: 100%;
@@ -31,12 +32,12 @@
 }
 
 .task {
-	.task_list {
+	&__list {
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
 	}
-	.task {
+	& {
 display: grid;
 grid-template-columns: auto 1fr auto auto;
 gap: 12px;
@@ -45,38 +46,38 @@ align-items: center;
 padding: 8px 0;
 border-bottom: 1px solid #d3dee9;
 	}
-	.task_number {
+	&__number {
 		font-size: 14;
 		color: #212529;
 	}
-	.task_text {
+	&__text {
 		transition: opacity 0.7s;
 		font-size: 16px;
 		color: #212529;
 	}
 
-	.task--done .task_text {
+	&--done &__text {
 opacity: 0.5;
 text-decoration: line-through;
 	}
-	.task_button {
+	&__button {
 		transition: opacity 0.7s;
-		button:hover {
+		&:hover {
 			opacity: 0.5;
 		}
 		height: 28px;
 		width: 28px;
 		background-size: cover;
 
-		.task--do {
-			background-image: url('/svg/task_do.svg');
+		&--do {
+			background-image: url('/svg/task__do.svg');
 		}
-		.task--cancel {
-			background-image: url('/svg/task_cancel.svg');
+		&--cancel {
+			background-image: url('/svg/task__cancel.svg');
 			
 		}
-		.task--done {
-			background-image: url('/svg/task_done.svg');
+		&--done {
+			background-image: url('/svg/task__done.svg');
 			
 		}
 	}

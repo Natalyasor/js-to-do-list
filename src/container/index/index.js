@@ -21,11 +21,11 @@ export class Todo {
         'task',
       ).content.firstElementChild
 
-    this.#block = document.querySelector('.task_list')
+    this.#block = document.querySelector('.task__list')
 
-    this.#input = document.querySelector('.form_input')
+    this.#input = document.querySelector('.form__input')
 
-    this.#button = document.querySelector('.form_button')
+    this.#button = document.querySelector('.form__button')
 
     this.#button.onclick = this.#handleAdd
     this.#render()
@@ -73,8 +73,8 @@ export class Todo {
     const result = this.#toggleDone(data.id)
     if (result === true || result === false) {
       el.classList.toggle('task--done')
-      btn.classList.toggle('task_button--do')
-      btn.classList.toggle('task_button--done')
+      btn.classList.toggle('task__button--do')
+      btn.classList.toggle('task__button--done')
     }
   }
 
