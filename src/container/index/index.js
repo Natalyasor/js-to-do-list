@@ -1,4 +1,26 @@
 export class Todo {
+  static #NAME = 'todo'
+
+  static #saveData = () => {
+    localStorage.setItem(
+      this.#NAME,
+      JSON.stringify({
+        list: this.#list,
+        count: this.#count,
+      }),
+    )
+  }
+
+  static #loadData = () => {
+    const data = localStorage.getItem(this.#NAME)
+
+    if (data) {
+      const { list, count } = JSON.parse(data)
+      this.#list = list
+      this.#count = count
+    }
+  }
+
   static #list = []
   static #count = 0
 
@@ -28,6 +50,8 @@ export class Todo {
     this.#button = document.querySelector('.form__button')
 
     this.#button.onclick = this.#handleAdd
+
+    this.#loadData()
     this.#render()
   }
 
@@ -37,6 +61,7 @@ export class Todo {
       this.#createTaskData(value)
       this.#input.value = ''
       this.#render()
+      this.#saveData()
     }
   }
 
@@ -48,7 +73,7 @@ export class Todo {
     } else {
       this.#list.forEach((taskData) => {
         const el = this.#createTaskElem(taskData)
-        this.#block.apennd(el)
+        this.#block.append(el)
       })
     }
   }
@@ -66,6 +91,11 @@ export class Todo {
 
     btnDo.onclick = this.#handleDo(data, btnDo, el)
 
+    if (data.done) {
+      el.classList.add('task--done')
+      btnDo.classList.remove('task__button--do')
+      btnDo.classList.add('task__button--done')
+    }
     return el
   }
 
@@ -75,6 +105,7 @@ export class Todo {
       el.classList.toggle('task--done')
       btn.classList.toggle('task__button--do')
       btn.classList.toggle('task__button--done')
+      this.#saveData()
     }
   }
 
@@ -92,6 +123,7 @@ export class Todo {
     if (confirm('Видалити задачу?')) {
       const result = this.#deleteById(data.id)
       if (result) this.#render()
+      this.#saveData()
     }
   }
 
